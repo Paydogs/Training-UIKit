@@ -11,7 +11,7 @@ class AppController {
     private lazy var mainWindow: UIWindow = {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = LoadingScreen()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1  ) { [weak self] in
             window.rootViewController = MainAppScreen()
         }
         return window

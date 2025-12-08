@@ -7,22 +7,38 @@
 
 import UIKit
 
-class MainAppScreen: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBlue
-
+class MainAppScreen: StaticBaseScreen {
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello UIKit!"
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 32)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
+        return label
+    }()
+    
+    lazy var detailsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "More comming soon"
+        label.textColor = .white
+        label.font = .boldSystemFont(ofSize: 16)
+        return label
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBlue
 
-        NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        addView(UIView.emptyView(height: 64))
+        addView(titleLabel)
+        addView(detailsLabel)
+        addEmptyView()
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(label)
+
+//        NSLayoutConstraint.activate([
+//            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//        ])
     }
 }
 

@@ -6,24 +6,33 @@
 //
 
 import UIKit
+import Toolkit
+import Lottie
 
-class LoadingScreen: UIViewController {
+class LoadingScreen: StaticBaseScreen {
     override var prefersStatusBarHidden: Bool { true }
     
-    lazy var container: UIStackView = {
-        let stackView = UIStackView()
-        self.view.addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.anchorToSuperView()
-        return stackView
+    lazy var imageView: UIAnimatedImageView = {
+        let lottieView = UIAnimatedImageView(animation: .named("Splash"))
+        lottieView.loopMode = .loop
+        lottieView.play()
+        return lottieView
+    }()
+    
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Loading..."
+        return label
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupScreen()
+    }
+    
+    func setupScreen() {
         self.view.backgroundColor = .white
-        let imageView = UIImageView(image: UIImage(named: "SplashImage"))
-        imageView.contentMode = .scaleAspectFit
-        container.addArrangedSubview(imageView)
+
+        addView(imageView)
     }
 }
