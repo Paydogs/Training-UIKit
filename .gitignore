@@ -10,3 +10,6 @@ DerivedData
 *.ipa
 .*.swp
 .*.swo
+*.xcodeproj
+*.xcworkspace
+Derived/
