@@ -13,7 +13,8 @@ let defaultApp = Target.target(name: "Training-UIKit",
                                dependencies: [
                                 .external(name: "Alamofire"),
                                 .external(name: "Lottie"),
-                                .external(name: "Toolkit")
+                                .external(name: "Toolkit"),
+                                .external(name: "Factory")
                                ])
 
 let project = Project(name: "Training-UIKit",

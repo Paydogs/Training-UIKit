@@ -6,15 +6,23 @@
 //
 
 import UIKit
+import Toolkit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    lazy var appController: AppController = {
-        return AppController()
-    }()
+    var window: UIWindow?
+    var diContainer: DIContainer?
+    var appController: AppController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        appController.appWindow.makeKeyAndVisible()
+        let assembly = Assemblies()
+        diContainer = assembly.collectDI()
+        
+        appController = diContainer?.resolve(AppController.self)
+        window = appController?.appWindow
+        
+        window?.makeKeyAndVisible()
+        
         return true
     }
 }

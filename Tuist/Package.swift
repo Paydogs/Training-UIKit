@@ -9,7 +9,8 @@ import PackageDescription
         productTypes: [
             "Toolkit": .framework,
             "Alamofire": .framework,
-            "Lottie": .framework
+            "Lottie": .framework,
+            "Factory": .framework
         ],
         baseSettings: .settings(configurations: [
             .debug(name: "Debug"),
@@ -24,6 +25,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.0"),
         .package(url: "https://github.com/airbnb/lottie-spm", from: "4.5.2"),
+        .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
+//        .package(url: "https://github.com/paydogs/Toolkit", from: "1.0.0"),
         .package(path: "../../Toolkit")
     ],
     targets: [

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppController {
+class AppController {    
     private lazy var mainWindow: UIWindow = {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = LoadingScreen()
