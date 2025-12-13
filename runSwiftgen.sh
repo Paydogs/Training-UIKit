@@ -1,0 +1,1 @@
+./Tools/Swiftgen/bin/swiftgen

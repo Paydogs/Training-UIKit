@@ -5,7 +5,7 @@ let defaultApp = Target.target(name: "Training-UIKit",
                                product: .app,
                                bundleId: "com.magnificat.Training-UIKit",
                                infoPlist: .extendingDefault(with: [
-                                   "UILaunchScreen": ""
+                                "UILaunchScreen": ""
                                ]),
                                sources: ["Training-UIKit/**/*.swift"],
                                resources: ["Training-UIKit/Resources/Assets.xcassets",
