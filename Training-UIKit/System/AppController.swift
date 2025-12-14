@@ -6,18 +6,33 @@
 //
 
 import UIKit
+import Swinject
+import Toolkit
 
-class AppController {    
-    private lazy var mainWindow: UIWindow = {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = LoadingScreen()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1  ) { [weak self] in
-            window.rootViewController = MainAppScreen()
-        }
-        return window
-    }()
+class AppController {
+    private weak var window: UIWindow?
+    private let resolver: Resolver
     
-    var appWindow: UIWindow {
-        return mainWindow
+    init(resolver: Resolver) {
+        self.resolver = resolver
+    }
+    
+    
+    func start(in window: UIWindow, load: Bool = false) {
+        print("AppController started")
+        self.window = window
+        window.makeKeyAndVisible()
+        
+        if load {
+            window.rootViewController = resolver.get(LoadingScreen.self)
+            
+            Task.runOnMainThreadAfter(seconds: 2) {  [weak self] in
+                guard let self, let window = self.window else { return }
+                window.rootViewController = resolver.get(MainAppScreen.self)
+            }
+
+        } else {
+            window.rootViewController = self.resolver.get(MainAppScreen.self)
+        }
     }
 }

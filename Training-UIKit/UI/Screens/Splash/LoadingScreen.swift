@@ -19,20 +19,27 @@ class LoadingScreen: StaticBaseScreen {
         return lottieView
     }()
     
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Loading..."
-        return label
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            options: [.curveEaseIn],
+            animations: { [weak self] in
+                self?.imageView.alpha = 1
+            }
+        )
+    }
+    
     func setupScreen() {
         self.view.backgroundColor = .white
-
+        
         addView(imageView)
     }
 }
