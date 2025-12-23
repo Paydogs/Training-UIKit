@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import Toolkit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,16 +18,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return appController
     }()
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-        
-        appController.start(in: window, load: true)
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
+        Log.install(ToolkitLoggerAdapter())
+//        AppleLoggerAdapter.bootstrapStandardOutputWithLogLevel(level: .trace)
+//        Log.install(AppleLoggerAdapter())
         
         return true
     }
-}
 
+    // Scene support (iOS 13+)
+    func application(_ application: UIApplication,
+                     configurationForConnecting connectingSceneSession: UISceneSession,
+                     options: UIScene.ConnectionOptions) -> UISceneConfiguration
+    {
+        let config = UISceneConfiguration(name: "Default Configuration",
+                                          sessionRole: connectingSceneSession.role)
+        config.delegateClass = SceneDelegate.self
+        return config
+    }
+}
 
 extension AppDelegate {
 

@@ -18,7 +18,7 @@ class MainAppScreen: StaticBaseScreen {
     
     lazy var detailsLabel: UILabel = {
         let label = UILabel()
-        label.text = "More comming soon"
+        label.text = "More coming soon"
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 16)
         return label

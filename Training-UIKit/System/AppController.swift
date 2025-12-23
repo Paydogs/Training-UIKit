@@ -7,7 +7,6 @@
 
 import UIKit
 import Swinject
-import Toolkit
 
 class AppController {
     private weak var window: UIWindow?
@@ -17,9 +16,8 @@ class AppController {
         self.resolver = resolver
     }
     
-    
     func start(in window: UIWindow, load: Bool = false) {
-        print("AppController started")
+        Log.debug("AppController started")
         self.window = window
         window.makeKeyAndVisible()
         

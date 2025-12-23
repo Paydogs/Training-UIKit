@@ -6,11 +6,16 @@
 //
 
 import Swinject
+import Toolkit
 
 final class SystemAssembly: Assembly {
     func assemble(container: Container) {
-        print("Assembling SystemAssembly...")
+        registerUtils(to: container)
         registerScreens(to: container)
+    }
+    
+    func registerUtils(to container: Container) {
+
     }
     
     func registerScreens(to container: Container) {
