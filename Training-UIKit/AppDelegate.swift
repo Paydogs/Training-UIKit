@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    // Scene support (iOS 13+)
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration

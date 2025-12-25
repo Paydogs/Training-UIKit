@@ -10,10 +10,12 @@ let defaultApp = Target.target(name: "Training-UIKit",
 
                                ]),
                                sources: ["Training-UIKit/**/*.swift"],
-                               resources: ["Training-UIKit/Resources/Assets.xcassets",
-                                           "Training-UIKit/Resources/LaunchScreen.storyboard",
-                                           "Training-UIKit/Resources/AppIcon.icon",
-                                           "Training-UIKit/Resources/Animations/**/"],
+                               resources: ["Training-UIKit/Resources/**/"],
+//                               resources: ["Training-UIKit/Resources/Assets.xcassets",
+//                                           "Training-UIKit/Resources/LaunchScreen.storyboard",
+//                                           "Training-UIKit/Resources/AppIcon.icon",
+//                                           "Training-UIKit/Resources/Animations/**/",
+//                                           "Training-UIKit/Resources/Localization/**/"],
                                dependencies: [
                                 .external(name: "Alamofire"),
                                 .external(name: "Lottie"),
@@ -23,4 +25,6 @@ let defaultApp = Target.target(name: "Training-UIKit",
                                ])
 
 let project = Project(name: "Training-UIKit",
-                      targets: [defaultApp])
+                      targets: [defaultApp],
+                      resourceSynthesizers: [.assets(),
+                                             .strings()])

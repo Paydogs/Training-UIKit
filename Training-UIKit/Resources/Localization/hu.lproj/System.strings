@@ -1,0 +1,13 @@
+/* 
+  System.strings
+  Training-UIKit
+
+  Created by Andras Olah on 2025. 12. 25..
+  
+*/
+
+"dashboard_title_key" = "Szia UIKit!";
+"dashboard_subtitle_key" = "A többi hamarosan!";
+
+"language_code_en" = "Angol";
+"language_code_hu" = "Magyar";

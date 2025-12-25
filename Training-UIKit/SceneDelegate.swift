@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
+        window.overrideUserInterfaceStyle = .unspecified
         appController.start(in: window, load: true)
         Log.debug("Started")
 

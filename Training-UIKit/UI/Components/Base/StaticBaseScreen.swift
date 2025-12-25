@@ -9,6 +9,14 @@ import UIKit
 import Toolkit
 
 class StaticBaseScreen: UIViewController {
+    deinit {
+        if let languageObserver {
+                NotificationCenter.default.removeObserver(languageObserver)
+            }
+    }
+    
+    private var languageObserver: NSObjectProtocol?
+    
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -22,6 +30,7 @@ class StaticBaseScreen: UIViewController {
         
         view.addSubview(stackView)
         stackView.anchorToSuperView()
+        subscribeToLanguageChange()
     }
     
     func addView(_ view: UIView, spacing: CGFloat? = nil) {
@@ -34,4 +43,22 @@ class StaticBaseScreen: UIViewController {
     func addEmptyView() {
         stackView.addArrangedSubview(UIView.emptyView())
     }
+    
+    func languageChanged() {
+        // Override
+    }
 }
+
+private extension StaticBaseScreen {
+    func subscribeToLanguageChange() {
+        languageObserver = NotificationCenter.default.addObserver(
+            forName: .languageDidChange,
+            object: nil,
+            queue: .main
+        ) { [weak self] _ in
+            self?.languageChanged()
+        }
+    }
+}
+
+

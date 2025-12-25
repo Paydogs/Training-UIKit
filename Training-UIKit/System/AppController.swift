@@ -11,6 +11,7 @@ import Swinject
 class AppController {
     private weak var window: UIWindow?
     private let resolver: Resolver
+
     
     init(resolver: Resolver) {
         self.resolver = resolver
@@ -28,7 +29,7 @@ class AppController {
                 guard let self, let window = self.window else { return }
                 window.rootViewController = resolver.get(MainAppScreen.self)
             }
-
+            
         } else {
             window.rootViewController = self.resolver.get(MainAppScreen.self)
         }
