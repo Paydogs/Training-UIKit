@@ -18,3 +18,20 @@ public enum LanguageCode: String {
         }
     }
 }
+
+enum ColorScheme: String {
+    case light
+    case dark
+    case auto
+    
+    var localizedValue: String {
+        switch self {
+        case .light:
+            Keys.darkModeOff
+        case .dark:
+            Keys.darkModeOn
+        case .auto:
+            Keys.darkModeAutomatic
+        }
+    }
+}

@@ -11,7 +11,6 @@ import Swinject
 class AppController {
     private weak var window: UIWindow?
     private let resolver: Resolver
-
     
     init(resolver: Resolver) {
         self.resolver = resolver
@@ -27,11 +26,24 @@ class AppController {
             
             Task.runOnMainThreadAfter(seconds: 2) {  [weak self] in
                 guard let self, let window = self.window else { return }
-                window.rootViewController = resolver.get(MainAppScreen.self)
+                window.rootViewController = resolver.get(RootScreen.self)
             }
             
         } else {
-            window.rootViewController = self.resolver.get(MainAppScreen.self)
+            window.rootViewController = self.resolver.get(RootScreen.self)
+        }
+    }
+}
+
+extension AppController: ColorSchemeHandler {
+    func setColorScheme(_ scheme: ColorScheme) {
+        switch scheme {
+        case .light:
+            window?.overrideUserInterfaceStyle = .light
+        case .dark:
+            window?.overrideUserInterfaceStyle = .dark
+        case .auto:
+            window?.overrideUserInterfaceStyle = .unspecified
         }
     }
 }

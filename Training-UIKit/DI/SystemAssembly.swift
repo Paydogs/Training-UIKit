@@ -19,13 +19,16 @@ final class SystemAssembly: Assembly {
     }
     
     func registerScreens(to container: Container) {
+        container.register(RootScreen.self) { _ in
+            RootScreen()
+        }
         container.register(LoadingScreen.self) { _ in
             LoadingScreen()
         }
         .inObjectScope(.transient)
         
-        container.register(MainAppScreen.self) { _ in
-            MainAppScreen()
+        container.register(DashboardScreen.self) { _ in
+            DashboardScreen()
         }
         .inObjectScope(.container)
     }

@@ -8,6 +8,14 @@
 
 "dashboard_title_key" = "Hello UIKit!";
 "dashboard_subtitle_key" = "More coming soon...";
+"settings_screen_title_key" = "Settings";
+"settings_screen_subtitle_key" = "For setting stuff";
+"settings_screen_language_row_key" = "Language";
+"settings_screen_dark_mode_row_key" = "Dark mode";
 
 "language_code_en" = "English";
 "language_code_hu" = "Hungarian";
+
+"dark_mode_on" = "Dark";
+"dark_mode_off" = "Light";
+"dark_mode_automatic" = "Auto";

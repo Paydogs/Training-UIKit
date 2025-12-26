@@ -20,7 +20,8 @@ class StaticBaseScreen: UIViewController {
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .center
+        stackView.alignment = .fill
+        stackView.distribution = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
@@ -36,12 +37,12 @@ class StaticBaseScreen: UIViewController {
     func addView(_ view: UIView, spacing: CGFloat? = nil) {
         stackView.addArrangedSubview(view)
         if let spacing {
-            stackView.addArrangedSubview(UIView.emptyView(height: spacing))
+            stackView.addArrangedSubview(UIView.emptyFlexibleVerticalView(height: spacing))
         }
     }
     
     func addEmptyView() {
-        stackView.addArrangedSubview(UIView.emptyView())
+        stackView.addArrangedSubview(UIView.emptyFlexibleVerticalView())
     }
     
     func languageChanged() {

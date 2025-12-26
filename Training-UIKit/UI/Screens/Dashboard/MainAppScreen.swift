@@ -1,5 +1,5 @@
 //
-//  MainAppScreen.swift
+//  DashboardScreen.swift
 //  Training-UIKit
 //
 //  Created by Andras Olah on 2025. 12. 07..
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainAppScreen: StaticBaseScreen {
+class DashboardScreen: StaticBaseScreen {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = Asset.primary.color
@@ -22,36 +22,21 @@ class MainAppScreen: StaticBaseScreen {
         return label
     }()
     
-    lazy var lightModeButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle(Localization.sharedInstance.currentLanguageCode.localizedValue, for: .normal)
-        return button
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Asset.bg1.color
         
-        addView(UIView.emptyView(height: 64))
+        addView(UIView.emptyFlexibleVerticalView(height: 64))
         addView(titleLabel)
         addView(detailsLabel)
-        addView(lightModeButton)
         addEmptyView()
         
         updateTexts()
-        
-        lightModeButton.addAction(
-            UIAction { [weak self] _ in
-                self?.switchLanguage()
-            },
-            for: .touchUpInside
-        )
     }
     
     func updateTexts() {
         titleLabel.text = Keys.dashboardTitleKey
         detailsLabel.text = Keys.dashboardSubtitleKey
-        lightModeButton.setTitle(Localization.sharedInstance.currentLanguageCode.localizedValue, for: .normal)
     }
     
     override func languageChanged() {
